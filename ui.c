@@ -12,11 +12,13 @@
 
 void clearScreen(void)
 {
+    /* Code ANSI : replace le curseur en haut a gauche puis efface l'ecran. */
     printf("\033[H\033[J");
 }
 
 static void printCell(char cell)
 {
+    /* Chaque symbole du plateau a sa couleur dans le terminal. */
     if (cell == 'X') {
         printf(RED "X " RESET);
     } else if (cell == 'O') {
@@ -32,6 +34,7 @@ static void printCell(char cell)
 
 void printBoard(char **board, int rows, int cols)
 {
+    /* Affichage du plateau avec des numeros lisibles par les joueurs. */
     printf("\n   ");
     for (int col = 0; col < cols; col++) {
         printf("%d ", col + 1);
@@ -53,14 +56,16 @@ void printBoard(char **board, int rows, int cols)
     printf("\n");
 }
 
-void printTurnInfo(int currentPlayer, int rotationSize)
+void printTurnInfo(const char *playerName, int currentPlayer, int rotationSize)
 {
-    printf(CYAN "\nPlayer %d turn" RESET "\n", currentPlayer + 1);
+    /* Affiche le joueur courant et la taille de rotation tiree au hasard. */
+    printf(CYAN "\n%s's turn (player %d)" RESET "\n", playerName, currentPlayer + 1);
     printf("Rotation square size: %dx%d\n", rotationSize, rotationSize);
 }
 
 void waitForEnter(void)
 {
+    /* Petite pause utile avant de fermer la fenetre SDL en fin de partie. */
     char buffer[8];
 
     printf("\nPress ENTER to continue...");
@@ -69,5 +74,6 @@ void waitForEnter(void)
 
 void pauseScreen(int milliseconds)
 {
+    /* usleep utilise des microsecondes, donc on multiplie par 1000. */
     usleep(milliseconds * 1000);
 }

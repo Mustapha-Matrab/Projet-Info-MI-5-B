@@ -2,6 +2,7 @@
 #define INPUT_H
 
 int readInt(const char *message, int min, int max);
+void askPlayerName(char playerName[MAX_NAME_LENGTH], int playerNumber);
 int askMenuChoice(void);
 int askPlayerCount(void);
 int askColumn(int cols);

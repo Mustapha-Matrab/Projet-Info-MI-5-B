@@ -3,7 +3,7 @@
 
 void clearScreen(void);
 void printBoard(char **board, int rows, int cols);
-void printTurnInfo(int currentPlayer, int rotationSize);
+void printTurnInfo(const char *playerName, int currentPlayer, int rotationSize);
 void waitForEnter(void);
 void pauseScreen(int milliseconds);
 
